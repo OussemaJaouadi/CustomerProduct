@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h4>Are you sure you want to delete {{order}} </h4>
+
+<div class="container container-fluid">
+    <form action="{% url 'order_delete' order.id %}" method="POST" >
+        {% csrf_token %}
+        <a href="{% url 'home' %}">
+        <div class="btn btn-light">
+            <i class="bi bi-x-circle-fill"></i>
+            Cancel
+        </div>
+         </a>
+        <button type="submit" name="submit" class="btn btn-danger">
+            <i class="bi bi-trash-fill"></i>
+            Delete
+        </button>
+    </form>
+</div>
+{% endblock %}
